@@ -1,10 +1,20 @@
 <?php
+    session_start();
 
-    $nom = $_GET["nom"];
-    $contrasenya = $_GET["contrasenya"];
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $nom = $_POST["nom"];
+        $contrasenya = $_POST["contrasenya"];
 
-    echo "<h2> Formulario </h2>";
-    echo "El nom rebut es: " . $nom . "<br>";
-    echo "La contrasenya es: " . $contrasenya . "<br>";
+        $_SESSION['nom'] = $nom;
+        $_SESSION['contrasenya'] = $contrasenya;
 
+        echo "<h2> Formulario </h2>";
+        echo "El nom rebut es: " . $nom . "<br>";
+        echo "La contrasenya es: " . $contrasenya . "<br>";
+    } else {
+        echo "Error, no trobat formulari.";
+    }
+
+    
+    
 ?>
